@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class StringCalculator {
 
     public static int splitAndSum(String text) {
@@ -5,7 +7,11 @@ public class StringCalculator {
         if (text == null || text.isEmpty()) {
             return 0;
         }
-        result = Integer.parseInt(text);
+        String[] values = text.split(",");
+        for (String value : values) {
+            result += Integer.parseInt(value);
+        }
+
         return result;
     }
 }
