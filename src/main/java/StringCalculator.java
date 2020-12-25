@@ -5,36 +5,27 @@ public class StringCalculator {
     public static final String SEPARATOR = "[,:]";
 
     public static int splitAndSum(String text) {
-        int result;
-
         if (text == null || text.isEmpty()) {
             return 0;
         }
-
         String[] values = text.split(SEPARATOR);
-        int[] ints = parseToInt(values);
-        result = sum(ints);
-
-        return result;
+        Positive[] numbers = parseToPositives(values);
+        return sum(numbers);
     }
 
-    private static int[] parseToInt(String[] values) {
-        int[] ints = new int[values.length];
-        for (int i = 0; i < ints.length; i++) {
-            int value = Integer.parseInt(values[i]);
-            if (value < 0) {
-                throw new RuntimeException();
-            }
-            ints[i] = value;
+    private static Positive[] parseToPositives(String[] values) {
+        Positive[] numbers = new Positive[values.length];
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = new Positive(values[i]);
         }
-        return ints;
+        return numbers;
     }
 
-    private static int sum(int[] ints) {
-        int result = 0;
-        for (int number : ints) {
-            result += number;
+    private static int sum(Positive[] numbers) {
+        Positive result = new Positive(0);
+        for (Positive number : numbers) {
+            result = result.add(number);
         }
-        return result;
+        return result.getNumber();
     }
 }
