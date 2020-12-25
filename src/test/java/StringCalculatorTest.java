@@ -9,4 +9,9 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.splitAndSum(null)).isEqualTo(0);
         assertThat(StringCalculator.splitAndSum("")).isEqualTo(0);
     }
+
+    @Test
+    public void 값_하나() {
+        assertThat(StringCalculator.splitAndSum("1")).isEqualTo(1);
+    }
 }

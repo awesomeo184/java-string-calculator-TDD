@@ -5,6 +5,7 @@ public class StringCalculator {
         if (text == null || text.isEmpty()) {
             return 0;
         }
+        result = Integer.parseInt(text);
         return result;
     }
 }
