@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class StringCalculator {
 
+    public static final String SEPARATOR = "[,:]";
+
     public static int splitAndSum(String text) {
         int result;
 
@@ -9,7 +11,7 @@ public class StringCalculator {
             return 0;
         }
 
-        String[] values = text.split("[,:]");
+        String[] values = text.split(SEPARATOR);
         int[] ints = parseToInt(values);
         result = sum(ints);
 
