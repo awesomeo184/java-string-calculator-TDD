@@ -5,12 +5,16 @@ public class StringCalculator {
     public static final String SEPARATOR = "[,:]";
 
     public static int splitAndSum(String text) {
-        if (text == null || text.isEmpty()) {
+        if (isNullOrBlank(text)) {
             return 0;
         }
         String[] values = text.split(SEPARATOR);
         Positive[] numbers = parseToPositives(values);
         return sum(numbers);
+    }
+
+    private static boolean isNullOrBlank(String text) {
+        return text == null || text.isEmpty();
     }
 
     private static Positive[] parseToPositives(String[] values) {
