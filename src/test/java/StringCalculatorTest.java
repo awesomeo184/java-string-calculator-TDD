@@ -26,4 +26,9 @@ public class StringCalculatorTest {
     public void 음수() {
         assertThrows(RuntimeException.class, () -> StringCalculator.splitAndSum("1,2:-3"));
     }
+
+    @Test
+    public void 숫자가_아닌_경우() {
+        assertThrows(RuntimeException.class, () -> StringCalculator.splitAndSum("가#나,3"));
+    }
 }
