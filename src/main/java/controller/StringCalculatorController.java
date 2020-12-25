@@ -1,7 +1,6 @@
 package controller;
 
 import domain.StringCalculator;
-import java.util.Scanner;
 import view.InputView;
 
 public class StringCalculatorController {
@@ -13,6 +12,7 @@ public class StringCalculatorController {
     }
 
     public void run() {
-        StringCalculator.splitAndSum(userInput.inputExpression());
+        int result = StringCalculator.splitAndSum(userInput.inputExpression());
+        System.out.println(result);
     }
 }
