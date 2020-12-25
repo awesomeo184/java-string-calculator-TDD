@@ -21,7 +21,11 @@ public class StringCalculator {
     private static int[] parseToInt(String[] values) {
         int[] ints = new int[values.length];
         for (int i = 0; i < ints.length; i++) {
-            ints[i] = Integer.parseInt(values[i]);
+            int value = Integer.parseInt(values[i]);
+            if (value < 0) {
+                throw new RuntimeException();
+            }
+            ints[i] = value;
         }
         return ints;
     }
