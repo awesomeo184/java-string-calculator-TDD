@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+package domain;
 
 public class StringCalculator {
 

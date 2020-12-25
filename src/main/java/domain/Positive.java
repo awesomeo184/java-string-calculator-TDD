@@ -1,3 +1,5 @@
+package domain;
+
 public class Positive {
 
     private final int number;
