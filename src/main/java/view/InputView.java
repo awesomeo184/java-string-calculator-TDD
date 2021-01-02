@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 public class InputView {
+
     private final Scanner scanner;
 
     public InputView(Scanner scanner) {
@@ -15,7 +16,7 @@ public class InputView {
     }
 
     private String input() {
-        return scanner.nextLine().trim();
+        return scanner.nextLine();
     }
 
 }
