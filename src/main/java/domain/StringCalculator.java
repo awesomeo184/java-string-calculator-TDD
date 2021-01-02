@@ -1,20 +1,47 @@
 package domain;
 
+import java.util.Arrays;
+
 public class StringCalculator {
 
-    public static final String SEPARATOR = "[,:]";
+    public static final String COMMA = ",";
+    public static final String COLON = ":";
+    private static final int INDEX_OF_SEPARATOR = 2;
+    private static final int START_INDEX_OF_EXPRESSION = 4;
 
     public static int splitAndSum(String text) {
         if (isNullOrBlank(text)) {
             return 0;
         }
-        String[] values = text.split(SEPARATOR);
+
+        if (hasCustomSeparator(text)) {
+            String separator = findSeparator(text);
+            text = getExpression(text);
+            text = text.replaceAll(separator, COMMA);
+        }
+
+        text = text.replaceAll(COLON, COMMA);
+        String[] values = text.split(COMMA);
+        System.out.println(Arrays.toString(values));
         Positive[] numbers = parseToPositives(values);
         return sum(numbers);
     }
 
     private static boolean isNullOrBlank(String text) {
         return text == null || text.isEmpty();
+    }
+
+    public static boolean hasCustomSeparator(String text) {
+        String pattern = "//./.+";
+        return text.matches(pattern);
+    }
+
+    public static String findSeparator(String text) {
+        return String.valueOf(text.trim().charAt(INDEX_OF_SEPARATOR));
+    }
+
+    public static String getExpression(String text) {
+        return text.substring(START_INDEX_OF_EXPRESSION);
     }
 
     private static Positive[] parseToPositives(String[] values) {
